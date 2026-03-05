@@ -1,0 +1,31 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: #050505;
+  --color-background-secondary: #0A0A0C;
+  --color-accent-primary: #2B6CFF;
+  --color-accent-secondary: #00D6FF;
+  --color-text-heading: rgba(255, 255, 255, 0.9);
+  --color-text-body: rgba(255, 255, 255, 0.6);
+  --font-sans: var(--font-inter);
+}
+
+@layer base {
+  body {
+    background-color: var(--color-background);
+    color: var(--color-text-body);
+    font-family: var(--font-sans);
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    color: var(--color-text-heading);
+    letter-spacing: -0.025em; /* tight tracking */
+  }
+}
+
+/* Custom utility for the glassmorphism nav */
+@utility glass-nav {
+  background-color: rgba(5, 5, 5, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
