@@ -104,7 +104,7 @@ export function CanvasSequence() {
     }, []);
 
     return (
-        <div ref={containerRef} style={{ height: SCROLL_HEIGHT }} className="relative w-full z-20">
+        <div ref={containerRef} style={{ height: SCROLL_HEIGHT }} className="relative w-full z-20 cursor-none">
             {/* Sticky container holds the canvas perfectly in view */}
             <div className="sticky top-0 w-full h-screen overflow-hidden flex items-center justify-center bg-[#050505] pointer-events-none">
 
@@ -123,7 +123,7 @@ export function CanvasSequence() {
 
                 {/* We will later add Overlays here inside the sticky container, driven by framer motion */}
                 <ExplosionOverlay />
-                <GateOverlay />
+                <GateOverlay scrollYProgress={scrollYProgress} />
 
             </div>
         </div>

@@ -1,18 +1,21 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, MotionValue, useTransform } from "framer-motion";
 
-export function GateOverlay() {
-    const { scrollYProgress } = useScroll();
+interface GateOverlayProps {
+    scrollYProgress: MotionValue<number>;
+}
 
-    // Trigger much earlier, as the man starts turning and walking towards the gate
-    // Assuming Video 3 starts feeling "active" around 55% to 65% scroll
-    const containerOpacity = useTransform(scrollYProgress, [0.50, 0.55, 0.82, 0.85], [0, 1, 1, 0]);
+export function GateOverlay({ scrollYProgress }: GateOverlayProps) {
+    // Video 3 (Gate) occupies roughly scroll progress 0.71 to 1.0 within the canvas container.
+    // Text appears shortly after video 3 starts and fades out before the container ends,
+    // so it never bleeds into the next section.
+    const containerOpacity = useTransform(scrollYProgress, [0.72, 0.76, 0.93, 0.97], [0, 1, 1, 0]);
 
-    // Mask reveals for lines, staggered earlier and faster
-    const line1Y = useTransform(scrollYProgress, [0.55, 0.58], ["100%", "0%"]);
-    const line2Y = useTransform(scrollYProgress, [0.58, 0.61], ["100%", "0%"]);
-    const line3Y = useTransform(scrollYProgress, [0.61, 0.64], ["100%", "0%"]);
+    // Mask reveals for lines, staggered within the video 3 range
+    const line1Y = useTransform(scrollYProgress, [0.74, 0.78], ["100%", "0%"]);
+    const line2Y = useTransform(scrollYProgress, [0.78, 0.82], ["100%", "0%"]);
+    const line3Y = useTransform(scrollYProgress, [0.82, 0.86], ["100%", "0%"]);
 
     return (
         <motion.div

@@ -47,7 +47,7 @@ export function ExplosionOverlay() {
                             whileInView={{ x: 0, opacity: 1 }}
                             transition={{ duration: 0.5, delay: idx * 0.1 }}
                         >
-                            <span className="text-xl md:text-2xl font-bold tracking-tight uppercase whitespace-nowrap drop-shadow-lg">
+                            <span className="text-xl md:text-2xl font-black tracking-tighter uppercase whitespace-nowrap drop-shadow-lg">
                                 {idx + 1}. {item.title}
                             </span>
                         </motion.div>
@@ -63,7 +63,7 @@ export function ExplosionOverlay() {
                             whileInView={{ x: 0, opacity: 1 }}
                             transition={{ duration: 0.5, delay: idx * 0.1 }}
                         >
-                            <span className="text-xl md:text-2xl font-bold tracking-tight uppercase whitespace-nowrap drop-shadow-lg">
+                            <span className="text-xl md:text-2xl font-black tracking-tighter uppercase whitespace-nowrap drop-shadow-lg">
                                 {idx + 5}. {item.title}
                             </span>
                         </motion.div>
